@@ -12,7 +12,6 @@ public class Main {
         arr.set(0, "test 2");
 
         arr.get(1);
-
         System.out.println(arr); // toString()
     }
 }
