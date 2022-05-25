@@ -21,18 +21,15 @@ public class MyStringArrayList {
 
     public void add(int index, String element) {
         if (rangeCheckFor(index,"add")) {
-            if(array[index]==null) {
+//            if(array[index]==null) {
+//                resize(size + 1);
+//                array[index] = element;
+//            }
+//            else{
                 resize(size + 1);
+            if (size - 1 - index >= 0) System.arraycopy(array, index, array, index + 1, size - 1 - index);
                 array[index] = element;
-            }
-            else{
-                resize(size + 1);
-                for(int i = size-1;i>index;i--){
-
-                    array[i]=array[i-1];
-                }
-                array[index] = element;
-            }
+//            }
         }
 
     }
