@@ -12,40 +12,42 @@ public class MyStringArrayList {
     }
 
     public void add(int index, String element) {
-        if (index >= 0 && index < size) {
+        if (rangeCheckFor(index,"add")) {
             array[index] = element;
             resize(size + 1);
         }
-        else{
-            System.out.println("sry, but u cant add element, cause index under number "+ index +" exist from the size of the Array, maximum value is " +(size-1));
-        }
+
     }
 
     public void remove(int index) {
-        if (index >= 0 && index < size) {
+        if (rangeCheckFor(index,"remove")){
             if (size - 1 - index >= 0) System.arraycopy(array, index + 1, array, index, size - 1 - index);
             array[size - 1] = null;
-        }else{
-            System.out.println("sry, but u cant remove element, cause index under number "+ index +" exist from the size of the Array, maximum value is " +(size-1));
         }
     }
 
     public void set(int index, String element) {
-        if (index >= 0 && index < size) {
+        if (rangeCheckFor(index,"set")) {
             array[index] = element;
-        }else{
-            System.out.println("sry, but u cant set element, cause index under number "+ index +" exist from the size of the Array, maximum value is " +(size-1));
         }
+
 
     }
 
     public void get(int index) {
-        if (index >= 0 && index < size) {
+        if (rangeCheckFor(index,"get")) {
             System.out.println(array[index]);
-        }else{
-            System.out.println("sry, but u cant get element, cause index under number "+ index +" exist from the size of the Array, maximum value is " +(size-1));
         }
     }
+
+    public boolean rangeCheckFor(int index,String action){
+        if (index >= 0 && index < size) {
+            return true;
+        }
+        System.out.println("sry, but u cant "+ action +" the element, cause index under number "+ index +" exist from the size of the Array, maximum value is " +(size-1));
+        return false;
+    }
+
 
     @Override
     public String toString() {
